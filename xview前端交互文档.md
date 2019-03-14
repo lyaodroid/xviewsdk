@@ -1514,12 +1514,19 @@ map	对当前事件的参数描述，定义为“参数名:参数值”的HashMa
   1. 前端传入生成二维码的内容
 
   create() {
+    //返回结果
+    let qrImage = {
+      imagePrefix: "base64前缀 前端展示 需要拼接使用",
+      imageBase64: "base64实际值  可以与imagePrefix 拼接使用 展示"
+    }
+
     let data = {
       qrData : "内容前端自己定义 扫出来后 使用规则"
     }
     XviewSdk.getInstance().ComponentQR.Create(data)
     .callNativeXView()
     .then((_result)=>{
+      qrImage = _result.data;
       alert(JSON.stringify(_result));
     });
   }
