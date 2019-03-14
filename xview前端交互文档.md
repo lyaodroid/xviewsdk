@@ -57,7 +57,7 @@ Xview SDK 是一个基于 Android 和 iOS 组件化框架 封装的数据交互,
 
 ## 功能查看
 
-- [ionic-Xview](https://github.com/Justson/AgentWebX5)
+- [ionic-Xview]()
 
 ## 第三方 登录(友盟 SDK) ， 分享(友盟 SDK) ， 支付
 
