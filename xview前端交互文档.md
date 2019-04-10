@@ -2,6 +2,10 @@
 
 Xview SDK 是一个基于 Android 和 iOS 组件化框架 封装的数据交互, 为了使前端调用更方便,采用了组件功能模块划分。
 
+## 安装命令
+
+***npm install @xiaheng/xviewsdk@latest --save***
+
 ## 统一调用方式 和 返回参数
 
 - 前端调用 两种方式 回调
