@@ -945,6 +945,11 @@ map	对当前事件的参数描述，定义为“参数名:参数值”的HashMa
 - **单次定位** 示例代码
 
 ```typescript
+ 返回数据 定位 信息
+ {"code":0,"data":{"longitude":118.729317,"latitude":31.993877,"accuracy":29,"speed":0,"bearing":0,"country":"中国","province":"江苏省","city":"南京市",
+ "cityCode":"025","district":"建邺区","adCode":"320105","address":"江苏省南京市建邺区恒山路41号靠近南京师范大学附属中学新城小学(南校区)",
+ "poiName":"南京师范大学附属中学新城小学(南校区)"},"message":"success"}
+ 
   XviewSdk.getInstance()
     .ComponentLocation.OnceLocation()
     .callNativeXView()
@@ -961,7 +966,7 @@ map	对当前事件的参数描述，定义为“参数名:参数值”的HashMa
 1 .  开启持续定位
   let data = {
       refreshTime : 2,// 刷新 请求时间
-      url:"http:www.test.com/keepLocation",// 后端接收定位上报接口
+      locationUrl:"http:www.test.com/keepLocation",// 后端接收定位上报接口
       params:{// 后台需要的上报参数 key
         testData:"后台接口需要数据",
         location:"原生定位 所有定位信息在这里包括经纬度等"（ 原生请求时追加的固定字段）
