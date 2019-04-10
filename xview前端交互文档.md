@@ -1611,10 +1611,8 @@ XviewSdk.getInstance()
 3 . 发送短信
 sendSMS() {
     let data = {
-      sms: {
         number: "186xxxx9039",(不可为空)
         body: "我是测试信息无需权限"
-      }
     };
     XviewSdk.getInstance()
       .ComponentMobile.SendSMS(data)
@@ -1660,31 +1658,18 @@ clipboard() {
 - **App (ComponentApp)** 示例代码
 
 ```typescript
-1 .在app.component.ts 构造中 调用 initStatusBar 方法
+1 .监听原生网络状态
  /**
-   * 初始化安卓状态栏
-   * _statusBarHeight Android 状态栏 高度 
+   * 网络变化监听 状态
+   * _WiFi  phoneNet
    */
-  private initStatusBar() {
-    let statusBar = _statusBarHeight => {
-      let statusBarHeight = _statusBarHeight.data || 20;
-      let styleDom = document.styleSheets[0];
-      styleDom["addRule"](
-        "ion-navbar.toolbar-ios",
-        "padding-top:" + statusBarHeight + "px !important;"
-      );
-      styleDom["addRule"](
-        ".toolbar-ios ion-title",
-        "padding-top:" + (statusBarHeight - 5) + "px !important;"
-      );
-      styleDom["addRule"](
-        "ion-navbar.toolbar-ios",
-        "min-height:" + (statusBarHeight + 44) + "px !important;"
-      );
+  private wifiStatus() {
+    let wifiStatus = _status => {
+    
     };
 
-    XviewSdk.getInstance().ComponentApp.getStatusBarHeight()
-    .callNativeXView().then(statusBar);
+    XviewSdk.getInstance().ComponentApp.WifiStatus()
+    .callNativeXView().then(wifiStatus);
 
   }
 ```
