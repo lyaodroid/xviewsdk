@@ -1,0 +1,19 @@
+import { XviewSdk } from "./../xviewsdk";
+import { Component, ChangeDetectorRef } from "@angular/core";
+
+import { IonicPage } from "../ionic3/ionic3";
+import { IosPage } from "../ios/ios";
+import { AndroidPage } from "../android/android";
+
+@Component({
+  templateUrl: "tabs.html"
+})
+export class TabsPage {
+  tab1Root = AndroidPage;
+  tab2Root = IonicPage;
+  tab3Root = IosPage;
+
+  constructor() {
+  }
+
+}

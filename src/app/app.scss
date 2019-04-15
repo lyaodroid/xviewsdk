@@ -1,0 +1,44 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+/*正常头部高度20,是目前电量条的高度*/
+.toolbar-ios ion-title,.toolbar-ios {
+  padding-top:20px;
+}
+
+ion-navbar.toolbar-ios {
+  min-height: 44px;
+}
+/*不能把上面的20改成44，如果该的话不是刘海的手机也会变高,但是这能同意控制所有的高度*/
+/*IphoneX头部高度44*/
+@media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+  .toolbar-ios ion-title,.toolbar-ios {
+      padding-top: 44px;
+  }
+  ion-navbar.toolbar-ios {
+      min-height: 88px;
+  }
+}
+
+/*安卓刘海屏头部高度44*/
+@media only screen and (device-width:411px) and (device-height:854px) {
+  .toolbar-ios ion-title,.toolbar-ios {
+      padding-top: 44px;
+  }
+  ion-navbar.toolbar-ios {
+      min-height: 88px;
+  }
+}

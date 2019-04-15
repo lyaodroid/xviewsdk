@@ -1,0 +1,23 @@
+<!--
+  Generated template for the UmPushPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>UmPush</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <button ion-item (click)="setAlias()">设置别名</button>
+  <button ion-item (click)="deleteAlias()">删除别名</button>
+  <button ion-item (click)="addTags()">设置标签</button>
+  <button ion-item (click)="deleteTags()">删除标签</button>
+  <button ion-item (click)="getAllTags()">获取所有标签</button>
+</ion-content>

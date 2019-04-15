@@ -1,0 +1,31 @@
+<!--
+  Generated template for the QqPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>QQ</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    回调结果: {{"code = " + this.xviewResult.code + "--message = " +
+    this.xviewResult.message }}
+  </ion-card>
+
+  <button ion-item (click)="login()">登陆</button>
+
+  <button ion-item (click)="shareType('text')">分享文字</button>
+  <button ion-item (click)="shareType('image')">分享图片</button>
+  <button ion-item (click)="shareType('webPage')">分享网页</button>
+  <button ion-item (click)="shareType('music')">分享音乐</button>
+  <button ion-item (click)="shareType('video')">分享视频</button>
+
+</ion-content>

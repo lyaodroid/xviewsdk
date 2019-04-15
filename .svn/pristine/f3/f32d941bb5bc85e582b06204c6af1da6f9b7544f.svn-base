@@ -1,0 +1,150 @@
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { XviewSdk } from "../xviewsdk";
+import { INIT_ZINDEX } from "ionic-angular/umd/navigation/nav-util";
+import { listener } from "@angular/core/src/render3/instructions";
+
+/**
+ * Generated class for the AmapLocationPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: "page-amap-location",
+  templateUrl: "amap-location.html"
+})
+export class AmapLocationPage {
+  xviewResult = {
+    code: 2,
+    message: "回调数据"
+  };
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {}
+
+  ionViewDidLoad() {
+
+    console.log("ionViewDidLoad AmapLocationPage");
+  }
+  ionViewDidLeave(){
+    XviewSdk.getInstance().ComponentLocation.SetKeepLocationCallback(null);
+  }
+
+  /*
+  *    sb.append("经    度    : " + aMapLocation.getLongitude() + "\n");
+            sb.append("纬    度    : " + aMapLocation.getLatitude() + "\n");
+            sb.append("精    度    : " + aMapLocation.getAccuracy() + "米" + "\n");
+            sb.append("提供者    : " + aMapLocation.getProvider() + "\n");
+
+            sb.append("速    度    : " + aMapLocation.getSpeed() + "米/秒" + "\n");
+            sb.append("角    度    : " + aMapLocation.getBearing() + "\n");
+            // 获取当前提供定位服务的卫星个数
+            sb.append("国    家    : " + aMapLocation.getCountry() + "\n");
+            sb.append("省            : " + aMapLocation.getProvince() + "\n");
+            sb.append("市            : " + aMapLocation.getCity() + "\n");
+            sb.append("城市编码 : " + aMapLocation.getCityCode() + "\n");
+            sb.append("区            : " + aMapLocation.getDistrict() + "\n");
+            sb.append("区域 码   : " + aMapLocation.getAdCode() + "\n");
+            sb.append("地    址    : " + aMapLocation.getAddress() + "\n");
+            sb.append("兴趣点    : " + aMapLocation.getPoiName() + "\n");
+
+
+// 返回结果  参数
+            jsonObject.put("longitude", aMapLocation.getLongitude());
+            jsonObject.put("latitude", aMapLocation.getLatitude());
+            jsonObject.put("accuracy", aMapLocation.getAccuracy());
+            jsonObject.put("speed", aMapLocation.getSpeed());
+            jsonObject.put("bearing", aMapLocation.getBearing());
+            jsonObject.put("country", aMapLocation.getCountry());
+            jsonObject.put("Province", aMapLocation.getCountry());
+            jsonObject.put("city", aMapLocation.getCity());
+            jsonObject.put("cityCode", aMapLocation.getCityCode());
+            jsonObject.put("district", aMapLocation.getCountry());
+            jsonObject.put("adCode", aMapLocation.getAdCode());
+            jsonObject.put("address", aMapLocation.getAddress());
+            jsonObject.put("poiName", aMapLocation.getPoiName());
+
+  */
+  onceLocation() {
+    XviewSdk.getInstance()
+      .ComponentLocation.OnceLocation()
+      .callNativeXView()
+      .then(_result => {
+        this.xviewResult = _result;
+        alert(JSON.stringify(_result.data));
+      });
+  }
+  listener() {
+    XviewSdk.getInstance().ComponentLocation.SetKeepLocationCallback(
+      _result => {
+        this.xviewResult = _result;
+        alert(JSON.stringify(_result.data));
+      }
+    );
+  }
+
+  /*
+   * 持续定位
+   */
+  lastLocation() {
+
+    let data = {
+      refreshTime: 5,
+      locationUrl: "http://192.168.2.222/xiaxun/api/app/coldUpdate/",
+      paramsJson: {
+        username: "liuyao",
+        pwd: "123456"
+      }
+    };
+    XviewSdk.getInstance()
+      .ComponentLocation.KeepLocation(data)
+      .callNativeXView()
+      .then(
+        _result => {
+          this.listener();
+        });
+  }
+
+  /*
+   * 关闭持续定位
+   */
+  closeLast() {
+    XviewSdk.getInstance()
+      .ComponentLocation.StopKeep()
+      .callNativeXView()
+      .then(
+        _result => {
+          this.xviewResult = _result;
+          alert(JSON.stringify(_result.data));
+        },
+        _error => {
+          this.xviewResult = _error;
+          alert("_error:" + JSON.stringify(_error));
+        }
+      );
+  }
+
+  /*
+   * 关闭持续定位交互
+   */
+  closeSend() {
+    XviewSdk.getInstance()
+      .ComponentLocation.StopSend()
+      .callNativeXView()
+      .then(
+        _result => {
+          this.xviewResult = _result;
+          alert(JSON.stringify(_result.data));
+        },
+        _error => {
+          this.xviewResult = _error;
+          alert("_error:" + JSON.stringify(_error));
+        }
+      );
+  }
+}

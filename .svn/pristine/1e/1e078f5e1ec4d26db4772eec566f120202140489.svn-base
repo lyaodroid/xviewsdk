@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic3ComponentList
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list inset>
+    <button ion-item *ngFor="let item of mComopents" (click)="componentSelected(item)">
+      {{ item.mComPonentName }}
+    </button>
+  </ion-list>
+</ion-content>

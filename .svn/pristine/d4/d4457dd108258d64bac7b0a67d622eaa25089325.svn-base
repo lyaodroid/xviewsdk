@@ -1,0 +1,42 @@
+<!--
+  Generated template for the UtilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Util</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        回调结果: {{"code = " + this.xviewResult.code + "--message = " + this.xviewResult.message }}
+    </ion-card>
+    <button ion-item (click)="SaveImage()">保存图片加水印</button>
+    <button ion-item (click)="contacts()">获取联系人</button>
+    <button ion-item (click)="CallPhone()">打电话</button>
+    <button ion-item (click)="SendSMS()">发送短信</button>
+    <button ion-item (click)="Clipboard()">复制到剪切板</button>
+    <button ion-item (click)="JumpBrowser()">跳转 浏览器</button>
+    <button ion-item (click)="JumpWeb()">跳转app 界面网页</button>
+    <button ion-item (click)="ScreenShot()">截屏</button>
+    <button ion-item (click)="FlashLamp()">打开闪光灯</button>
+    <button ion-item (click)="CleanCache()">清除缓存</button>
+
+    <button ion-item (click)="Exit()">退出app 杀死 app</button>
+    <button ion-item (click)="Hide()">app 只是退到后台 常用退出方式</button>
+    <button ion-item (click)="appOnBack()">Android返回键 注册监听</button>
+    <button ion-item (click)="appException()">调用组件 异常返回  调试期使用</button>
+
+    <button ion-item (click)="appInitSuccess()"> app 第一次加载成功 回调 刘海屏高度 监听设置状态栏高度</button>
+
+    <button ion-item (click)="xviewUpdateApp()">版本更新</button>
+    <button ion-item (click)="updateAppVersionName()">获取版本名称</button>
+    <button ion-item (click)="updateAppVersionCode()">获取版本更新判断使用的versionCode</button>
+
+</ion-content>
