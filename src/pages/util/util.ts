@@ -1,7 +1,6 @@
-import { SplashScreen } from "@ionic-native/splash-screen";
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { XviewSdk } from "@xiaheng/xviewsdk";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the UtilPage page.

@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { IonicPage, NavController, NavParams, AlertController } from "ionic-angular";
 import { XviewSdk } from "@xiaheng/xviewsdk";
 import { INIT_ZINDEX } from "ionic-angular/umd/navigation/nav-util";
 import { listener } from "@angular/core/src/render3/instructions";
+import { AlertServiceProvider } from "../../providers/alert-service/alert-service";
 
 /**
  * Generated class for the AmapLocationPage page.
@@ -24,7 +25,8 @@ export class AmapLocationPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public alterService: AlertServiceProvider
   ) { }
 
   ionViewDidLoad() {
@@ -49,10 +51,11 @@ export class AmapLocationPage {
       .ComponentLocation.OnceLocation()
       .callNativeXView()
       .then(_result => {
-        this.xviewResult = _result;
-        alert(JSON.stringify(_result.data));
+        this.alterService.alert(JSON.stringify(_result));
       });
   }
+
+
   listener() {
     XviewSdk.getInstance().ComponentLocation.SetKeepLocationCallback(
       _result => {

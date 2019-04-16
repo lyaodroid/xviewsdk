@@ -1660,32 +1660,19 @@ clipboard() {
 - **App (ComponentApp)** 示例代码
 
 ```typescript
-1 .在app.component.ts 构造中 调用 initStatusBar 方法
- /**
-   * 初始化安卓状态栏
-   * _statusBarHeight Android 状态栏 高度 
-   */
-  private initStatusBar() {
-    let statusBar = _statusBarHeight => {
-      let statusBarHeight = _statusBarHeight.data || 20;
-      let styleDom = document.styleSheets[0];
-      styleDom["addRule"](
-        "ion-navbar.toolbar-ios",
-        "padding-top:" + statusBarHeight + "px !important;"
-      );
-      styleDom["addRule"](
-        ".toolbar-ios ion-title",
-        "padding-top:" + (statusBarHeight - 5) + "px !important;"
-      );
-      styleDom["addRule"](
-        "ion-navbar.toolbar-ios",
-        "min-height:" + (statusBarHeight + 44) + "px !important;"
-      );
+1 .打开浏览器
+
+  JumpBrowser() {
+    let data = {
+      url: "https://www.2345.com/"
     };
-
-    XviewSdk.getInstance().ComponentApp.getStatusBarHeight()
-    .callNativeXView().then(statusBar);
-
+    XviewSdk.getInstance()
+      .ComponentMobile.JumpBrowser(data)
+      .callNativeXView()
+      .then(
+        _result => {
+          alert(JSON.stringify(_result));
+        };
   }
 ```
 
@@ -1753,7 +1740,7 @@ jumpWeb() {
    */
   private initStatusBar() {
     let statusBar = _statusBarHeight => {
-      let statusBarHeight = _statusBarHeight.data || 20;
+      let statusBarHeight = _statusBarHeight.data['statusBarHeight'] || 20;
       let styleDom = document.styleSheets[0];
       styleDom["addRule"](
         "ion-navbar.toolbar-ios",

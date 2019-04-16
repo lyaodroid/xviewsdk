@@ -1,10 +1,10 @@
-import { XviewSdk, XviewResult, XviewData } from "@xiaheng/xviewsdk";
-import { Component, ChangeDetectorRef } from "@angular/core";
-
+import { Component } from "@angular/core";
+import { XviewData, XviewSdk } from "@xiaheng/xviewsdk";
+import { AlertController } from "ionic-angular";
+import { AndroidPage } from "../android/android";
 import { IonicPage } from "../ionic3/ionic3";
 import { IosPage } from "../ios/ios";
-import { AndroidPage } from "../android/android";
-import { AlertController, Alert } from "ionic-angular";
+
 
 @Component({
   templateUrl: "tabs.html"
