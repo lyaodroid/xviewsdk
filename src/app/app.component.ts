@@ -1,4 +1,4 @@
-import { XviewSdk } from "@xiaheng/xview";
+import { XviewSdk } from "@xiaheng/xviewsdk";
 import { Component } from "@angular/core";
 import { Platform } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
@@ -30,8 +30,8 @@ export class MyApp {
    */
   private initStatusBar() {
     let statusBar = _statusBarHeight => {
-      alert(JSON.stringify(_statusBarHeight));
-      let statusBarHeight = _statusBarHeight.data || 20;
+      let statusBarHeight = _statusBarHeight.data['statusBarHeight'] || 20;
+      alert(statusBarHeight);
       let styleDom = document.styleSheets[0];
       styleDom["addRule"](
         "ion-navbar.toolbar-ios",

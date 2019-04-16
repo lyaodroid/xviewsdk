@@ -1,7 +1,7 @@
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { XviewSdk } from "@xiaheng/xview";
+import { XviewSdk } from "@xiaheng/xviewsdk";
 
 /**
  * Generated class for the UtilPage page.
@@ -271,7 +271,18 @@ export class UtilPage {
       alert("关闭当前页面");
     });
   }
+  /**
+   * 获取状态栏
+   */
+  getStatusBarHeight(){
+    let statusBar = _statusBarHeight => {
+      let statusBarHeight = _statusBarHeight.data['statusBarHeight'] || 20;
+      alert(statusBarHeight);
 
+    };
+    XviewSdk.getInstance().ComponentApp.getStatusBarHeight()
+      .callNativeXView().then(statusBar);
+  }
 
   /**
    * D:\>certutil -hashfile md5test.txt MD5

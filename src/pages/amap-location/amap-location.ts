@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { XviewSdk } from "@xiaheng/xview";
+import { XviewSdk } from "@xiaheng/xviewsdk";
 import { INIT_ZINDEX } from "ionic-angular/umd/navigation/nav-util";
 import { listener } from "@angular/core/src/render3/instructions";
 

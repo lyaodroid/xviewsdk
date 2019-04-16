@@ -1,4 +1,4 @@
-import { XviewSdk } from "@xiaheng/xview";
+import { XviewSdk } from "@xiaheng/xviewsdk";
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 

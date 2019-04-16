@@ -1,4 +1,4 @@
-import { XviewSdk, XviewResult, XviewData } from "@xiaheng/xview";
+import { XviewSdk, XviewResult, XviewData } from "@xiaheng/xviewsdk";
 import { Component, ChangeDetectorRef } from "@angular/core";
 
 import { IonicPage } from "../ionic3/ionic3";
