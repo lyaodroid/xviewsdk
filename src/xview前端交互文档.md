@@ -43,7 +43,7 @@ Xview SDK 是一个基于 Android 和 iOS 组件化框架 封装的数据交互,
 
         code    : 0 (成功) , 1 (取消) , -1(失败)  (number  类型)
 
-        message ：(查看错误信息 排查错误)
+        errorMessage ：(查看错误信息 排查错误)
 
         data    : string(普通字符串) ,JSON(对象类型) , Array(数组类型)
 
@@ -1671,7 +1671,7 @@ clipboard() {
       .callNativeXView()
       .then(
         _result => {
-          alert(JSON.stringify(_result));
+          alert(JSON.stringify(_result.data));
         };
   }
 ```
