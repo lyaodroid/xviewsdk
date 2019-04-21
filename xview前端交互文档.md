@@ -4,7 +4,7 @@ Xview SDK 是一个基于 Android 和 iOS 组件化框架 封装的数据交互,
 
 ## 安装命令
 
-***npm install @xiaheng/xviewsdksdk@latest --save***
+***npm install @xiaheng/xviewsdk --save***
 
 ## 统一调用方式 和 返回参数
 
@@ -1806,7 +1806,7 @@ jumpWeb() {
   }
 ```
 ```typescript
- 2. 获取版本名称
+ 2. 获取版本code
 /**
    * 获取versionCode
    * 前端升级更新请求时使用
