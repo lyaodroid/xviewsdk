@@ -1651,7 +1651,25 @@ jumpBrowser() {
 ```
 
 ```typescript
-5 . 复制到剪切板
+5 . 跳转 系统设置
+  /**
+   * 跳转系统设置
+   */
+  JumpSetting() {
+    let data = {
+      settings: "暂时默认为空后面会根据不同数据跳转不同界面"
+    };
+    XviewSdk.getInstance()
+      .ComponentMobile.JumpSetting(data)
+      .callNativeXView()
+      .then(_result => {
+        alert(JSON.stringify(_result.data));
+      });
+  }
+```
+
+```typescript
+6 . 复制到剪切板
 clipboard() {
   let data = {
       label: "沾我我就黏贴了"
@@ -1670,19 +1688,21 @@ clipboard() {
 - **App (ComponentApp)** 示例代码
 
 ```typescript
-1 .监听原生网络状态
- /**
-   * 网络变化监听 状态
-   * _WiFi  phoneNet
-   */
-  private wifiStatus() {
-    let wifiStatus = _status => {
-    
-    };
-
-    XviewSdk.getInstance().ComponentApp.WifiStatus()
-    .callNativeXView().then(wifiStatus);
-
+  1  /**
+     *   当前使用的网络 监听 其状态
+     *   typeName='WIFI'  NONE(无网络)  'MOBILE' 当前连接的网络类型
+     *   @param _callback 主动返回 网络 移动  WiFi 还是 未连接
+     *   state    true  false 网络是否能使用
+     */
+  NetConnectStatus() {
+      let netStatus = _result => {
+        alert(_result['typeName'])
+      };
+      let interStatus = _result => {
+        alert(_result['state']) 
+      };
+      XviewSdk.getInstance().ComponentApp.NetworkStatus(netStatus);
+      XviewSdk.getInstance().ComponentApp.InternetStatus(interStatus);
   }
 ```
 
@@ -1740,6 +1760,22 @@ jumpWeb() {
   }
 ```
 
+```typescript
+
+5 . 跳转QQ聊天
+ JumpQQ() {
+    let data = {
+      qqNumber: "21312321"(不可为空)
+    };
+    XviewSdk.getInstance()
+      .ComponentApp.TalkQQ(data)
+      .callNativeXView()
+      .then( _result => {
+          alert(JSON.stringify(_result));
+        });
+  }
+```
+
 - **Android 特有方法 （ComponentApp）** 示例代码
 
 ```typescript
@@ -1780,7 +1816,7 @@ jumpWeb() {
       );
     };
 
-    XviewSdk.getInstance().ComponentApp.getStatusBarHeight()
+    XviewSdk.getInstance().ComponentApp.GetStatusBarHeight()
     .callNativeXView().then(statusBar);
 
   }
