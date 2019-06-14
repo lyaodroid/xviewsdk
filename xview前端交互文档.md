@@ -1692,7 +1692,7 @@ clipboard() {
      *   当前使用的网络 监听 其状态
      *   typeName='WIFI'  NONE(无网络)  'MOBILE' 当前连接的网络类型
      *   @param _callback 主动返回 网络 移动  WiFi 还是 未连接
-     *   state    true  false 网络是否能使用
+     *   isConnected    true  false 网络是否能使用
      */
   NetConnectStatus() {
       let netStatus = _result => {
