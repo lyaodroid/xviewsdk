@@ -1873,12 +1873,41 @@ jumpWeb() {
     mVersionCode: 301,//新版的版本versioncode
     mVersionName: "1.0.1",//新版本的versionName
     mUpdateContent: "优化更新提示界面"             //前端升级弹框展示本次更新内容
-    apkSize: 32877, kb前端 展示的本次升级大小 前端展示 MB 自己转换下
+    apkSize: 32877, byte 前端 展示的本次升级大小 前端展示 MB 自己转换下
     apkUrl: "http://192.168.2.222/xiaxun/xiaxun.apk",//新版本的apk下载地址
     apkMd5: "3f0ba0a3d5b510b49412bdfaab289bd2",//新版本的apk  文件md5值 windows cmd ： certutil -hashfile test.apk(文件路径) MD5
   };
  *
  */
+ 
+   //持续回调 使用成员变量 
+   updateCallback = (result) => {
+    switch (result.code) {
+        case 0:
+            // 下载结束 自动安装
+            this.onCompleted(result.data.apkFilePath)
+            break;
+        case 1:
+            //开始下载
+            this.onStart();
+            break;
+        case 2:
+            // currentSize ( 0 ~ 100  百分比, 可以计算当前大小 )
+            //totalLength (总大小)
+            this.onProgress(
+                result.data.currentSize,
+                result.data.totalLength
+            );
+            break;
+        case -1:
+            // 下载出错 可能网络 或者服务器原因
+            console.log(result.errorMessage);
+            break;
+        default:
+            break;
+    }
+ 
+ 
   xviewUpdateApp() {
     let data = {
       mHasUpdate: true,
@@ -1892,10 +1921,9 @@ jumpWeb() {
       mUpdateContent: "优化更新提示界面"
     };
 
-    XviewSdk.getInstance()
-      .ComponentUpdate.APK(data)
-      .callNativeXView()
-      .then((result) => {
-        alert(JSON.stringify(result))
-      });
+        XviewSdk.getInstance()
+            .ComponentUpdate.APK(data)
+            .callNativeXView(this.updateCallback);
   }
+  
+  
