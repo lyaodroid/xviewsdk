@@ -1537,6 +1537,10 @@ XviewSdk.getInstance()
    */
 
   1 . upload() {
+      
+      // 从 基础组件 1.1.7版本开始支持
+      let files = [{fileKey:"后端使用",fileValue:"filePath(文件选择得到的原生路径)"},...]
+      
        let data = {
             url:"192.168...upload/",
             headers: this.headers(可选参数 可为 null 或者不传 根据自己后台需要),
