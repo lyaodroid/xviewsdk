@@ -1686,6 +1686,24 @@ clipboard() {
         });
   }
 ```
+```typescript
+7 . 读取剪切板
+    readClipboard() {
+        XviewSdk.getInstance()
+            .ComponentMobile.ReadClipboard()
+            .callNativeXView()
+            .then(
+                (_result) => {
+                    alert(JSON.stringify(_result.data.value));
+                },
+                (_error) => {
+                    this.xviewResult = _error;
+                    alert("_error:" + JSON.stringify(_error));
+                }
+            );
+    }
+
+```typescript
 
 
 
@@ -1778,6 +1796,68 @@ jumpWeb() {
           alert(JSON.stringify(_result));
         });
   }
+```
+```typesctipt
+6 . 打开其他APP 根据包名
+   /**
+     * 打开app 示例微信 包名 com.tencent.mm
+     * {    packageName: "com.tencent.mm",//Android
+     *      url： 根据第三方app 会提供打开方式，或者我们自己使用 一般不要使用Android
+    -------------------------- 
+     *      bundleId:(ios使用)
+     *      urlSchemes:(ios使用)
+     *  }
+     */
+    openApp() {
+        XviewSdk.getInstance()
+            .ComponentApp.OpenApp({ packageName: "com.tencent.mm(示例微信 包名自行百度搜索，iOS 参数暂未)" })
+            .callNativeXView()
+            .then((_result) => {
+                alert(JSON.stringify(_result));
+            });
+    }
+```typescript
+
+```typescript
+7 . 
+/**
+ * 获取手机已经安装的应用信息
+ * class AppInfo {
+
+        private String   packageName;(Android 包名)
+        private String   name; (应用名称)
+        private Drawable icon; 
+        private String   packagePath;
+        private String   versionName;
+        private int      versionCode;
+        private boolean  isSystem;
+ }
+
+ 返回 data = [appInfo,appInfo] 数组
+ */
+    appsInfo() {
+        XviewSdk.getInstance()
+            .ComponentMobile.AppsInfo()
+            .callNativeXView()
+            .then((_result) => {
+                console.log(_result.data[0].name);
+            });
+    }
+```typescript 
+
+```typescript
+8 . 文件选择
+    /**
+     * 选择文件 事例 最多三个
+     */
+    selectFile() {
+        XviewSdk.getInstance()
+            .ComponentApp.SelectFile({ selectedMax: 3 })
+            .callNativeXView()
+            .then((_result) => {
+                alert(JSON.stringify(_result.data));
+            });
+    }
 ```
 
 - **Android 特有方法 （ComponentApp）** 示例代码
