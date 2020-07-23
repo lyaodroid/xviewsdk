@@ -1538,7 +1538,7 @@ XviewSdk.getInstance()
 
   1 . upload() {
       
-      // 从 基础组件 1.1.7版本开始支持
+      // 从 基础组件 1.1.7版本开始支持 1.2.0 以后新旧都兼容
       let files = [{fileKey:"后端使用",fileValue:"filePath(文件选择得到的原生路径)"},...]
       
        let data = {
@@ -1798,14 +1798,14 @@ jumpWeb() {
   }
 ```
 ```typesctipt
-6 . 打开其他APP 根据包名
+
+6 . 
+iOS 先咨询iOS开发 工程中配置要打开的应用
+打开其他APP 根据包名 注意调用时 Android iOS 参数值不同 要 判断平台初始化值， 平台判断再初始化值
    /**
      * 打开app 示例微信 包名 com.tencent.mm
      * {    packageName: "com.tencent.mm",//Android
-     *      url： 根据第三方app 会提供打开方式，或者我们自己使用 一般不要使用Android
-    -------------------------- 
-     *      bundleId:(ios使用)
-     *      urlSchemes:(ios使用)
+     *      url：“Android默认不要使用，除非知道怎么使用才给值”
      *  }
      */
     openApp() {
@@ -1816,7 +1816,7 @@ jumpWeb() {
                 alert(JSON.stringify(_result));
             });
     }
-```typescript
+```
 
 ```typescript
 7 . 
@@ -1843,7 +1843,7 @@ jumpWeb() {
                 console.log(_result.data[0].name);
             });
     }
-```typescript 
+``` 
 
 ```typescript
 8 . 文件选择
