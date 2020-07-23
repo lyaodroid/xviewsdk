@@ -760,10 +760,10 @@ XviewSdk.getInstance()
 - **设置监听** 示例代码
 
 ```typescript
-1 . 示例代码 处理通知点击自定义回调 (全局监听处理)
+1 . 示例代码 处理通知点击自定义回调 (全局监听处理，没有附加参数 不处理点击事件)
 
   let notificationClick = (_result)=>{
-      alert(JSON.stringify(_result));// 返回 推送的附加参数
+      alert(JSON.stringify(_result));// 返回 推送的附加参数（必须有参数才回调这个事件）
   }
 
   XviewSdk.getInstance()
