@@ -1860,6 +1860,41 @@ iOS 先咨询iOS开发 工程中配置要打开的应用
     }
 ```
 
+```typescript
+
+9 . 申请权限 
+    /**
+     * 选择文件 事例 最多三个
+     */
+    requestPermission() {
+        XviewSdk.getInstance()
+            .ComponentApp.RequestPermission({ selectedMax: 3 })
+            .callNativeXView()
+            .then((_result) => {
+                alert(JSON.stringify(_result.data));
+            if(result.code == 0){
+                // dosomething
+            }
+            });
+    }
+```
+
+```typescript
+10 . 跳转权限设置
+ 
+    appSetPermission() {
+   
+       let permissions = ['android 权限1 ','android 权限2 ']
+
+        XviewSdk.getInstance()
+            .ComponentApp.SetPermission()
+            .callNativeXView()
+            .then((_result) => {
+                alert(JSON.stringify(_result.data))
+            });
+    }
+```
+
 - **Android 特有方法 （ComponentApp）** 示例代码
 
 ```typescript
