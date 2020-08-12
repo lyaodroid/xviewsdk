@@ -1867,8 +1867,11 @@ iOS 先咨询iOS开发 工程中配置要打开的应用
      * 选择文件 事例 最多三个
      */
     requestPermission() {
+    
+        let permissions = ['android 权限1 ','android 权限2 ']
+    
         XviewSdk.getInstance()
-            .ComponentApp.RequestPermission({ selectedMax: 3 })
+            .ComponentApp.RequestPermission(permissions)
             .callNativeXView()
             .then((_result) => {
                 alert(JSON.stringify(_result.data));
