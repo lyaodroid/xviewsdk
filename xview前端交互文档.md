@@ -1751,11 +1751,27 @@ clipboard() {
 ```typescript
 
 3 . 跳转app 界面网页
+    closeCallback = (data)=>{
+        console.log("CloseCallback" + JSON.stringify(data));
+    
+    }
+
+    sendDataCallback = (data)=>{
+        console.log("SendDataCallback" + JSON.stringify(data));
+    }
+
+    initCallback(){
+        window["CloseCallback"] = this.closeCallback;
+        window["SendDataCallback"] = this.sendDataCallback;
+    }
+
 jumpWeb() {
   let data = {
       title: "好123",
       url: "https://www.2345.com/"
     };
+    
+  this.initCallback();// 基础-组件1.2.4版本开始支持
 
   XviewSdk.getInstance()
       .ComponentApp.JumpWeb(data)
@@ -1764,6 +1780,19 @@ jumpWeb() {
           alert(JSON.stringify(_result));
         });
   }
+  
+  -------------------------------
+      sendData() {
+        let result = { code: 200, message: "支付成功" };
+       let isSuccess =  window["xview"]["sendData"](JSON.stringify(result));
+       console.log("sendData" + isSuccess);
+       
+    }
+
+    close() {
+        window['xview']['close']();
+    }
+
 ```
 ```typescript
 
